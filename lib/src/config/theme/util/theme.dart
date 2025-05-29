@@ -11,6 +11,7 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       elevation: 2,
       backgroundColor: Colors.deepPurple,
+        foregroundColor: Colors.white,
       shadowColor: Colors.grey,
       iconTheme: IconThemeData(
         color: Colors.black45,
