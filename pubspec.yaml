@@ -38,6 +38,7 @@ dependencies:
   provider: ^6.1.5
   google_fonts: ^6.2.1
   carousel_slider: ^5.0.0
+  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   flutter_test:
@@ -59,10 +60,12 @@ flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
+
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - .env
     - assets/shopping-illustration.png
     - assets/profile.jpg
     - assets/nammkart-logo.png

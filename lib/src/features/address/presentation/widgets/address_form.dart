@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nammkart/src/features/auth/presentation/widgets/custom_button.dart';
+import 'package:nammkart/src/config/common/custom_button.dart';
 
 class AddressForm extends StatelessWidget {
   const AddressForm({super.key, required this.buttonTitle, required this.streetController, required this.cityController, required this.countryController, required this.postalcodeController, required this.stateController, required this.onPress});
