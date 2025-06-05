@@ -1,0 +1,14 @@
+import 'package:nammkart/src/features/order/domain/entities/order_item.dart';
+
+class OrderEntity{
+  final OrderItemEntity orderItems;
+  final String userID;
+  final double totalPrice;
+  final String paymentMethod;
+  final bool? isPaid;
+  final bool? isDelivered;
+  final String? status;
+
+
+  OrderEntity({required this.orderItems,required this.userID,required this.totalPrice, required this.paymentMethod, this.isPaid, this.isDelivered, this.status, });
+}
