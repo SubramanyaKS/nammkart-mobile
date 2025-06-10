@@ -39,6 +39,11 @@ void didChangeDependencies() {
     // cart.getTotalPriceAsync(productCache.products);
     // print(total);
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        title: Text('My Cart'),
+      ),
       body: Column(children: [
         cart.items.isEmpty?
         NocartItem()
@@ -73,7 +78,7 @@ void didChangeDependencies() {
                   ],
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 CustomButton(title: 'Checkout', onPress: () {
                     Navigator.push(context,

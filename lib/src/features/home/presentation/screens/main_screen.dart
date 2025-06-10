@@ -25,38 +25,17 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     super.initState();
   }
-  bool _isInit = true;
   bool _isLoading = false;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    Provider.of<ProductProvider>(context, listen: false)
-        .fetchCategory();
-    if (_isInit) {
-      setState(() {
-        _isLoading = true;
-      });
-      Provider.of<ProductProvider>(context, listen: false)
-          .fetchProducts()
-          .then((_) {
-        setState(() {
-          _isLoading = false;
-        });
-      });
-      _isInit = false;
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final username = Provider.of<UserProvider>(context,listen: false).users.username;
+    
     final provider =Provider.of<ProductProvider>(context,listen: false);
     final product = provider.getTopProducts();
+
     final topRated =provider.getTopRatedProducts();
 
     return Scaffold(
-      // backgroundColor: Colors.grey[200],
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: SafeArea(
       child: Padding(
@@ -67,10 +46,14 @@ class _MainScreenState extends State<MainScreen> {
             children: [
               Row(
                 children: [
-                  Text('Hey, $username',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 30)),
-                  Spacer(),
+                   Consumer<UserProvider>(
+          builder: (context, userProvider, _) {
+            final username = userProvider.users.username;
+            return Text("Welcome, $username",style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 30));
+          },
+        ),
+                 Spacer(),
                   Icon(Icons.notifications),
                 ],
               ),
