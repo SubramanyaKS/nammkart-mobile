@@ -10,4 +10,24 @@ class OrderItemModel extends OrderItemEntity {
     required super.productId
   });
 
+  factory OrderItemModel.fromJson(Map<String, dynamic> json) {
+    return OrderItemModel(
+      name: json['name'],
+      quantity: json['quantity'],
+      image: json['image'],
+      price: (json['price'] as num).toDouble(),
+      productId: json['productId'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'quantity': quantity,
+      'image': image,
+      'price': price,
+      'productId': productId,
+    };
+  }
+
 }
