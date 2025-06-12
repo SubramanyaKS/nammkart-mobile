@@ -112,6 +112,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               final products = Provider.of<ProductProvider>(context, listen: false).products;
               final address = Provider.of<AddressProvider>(context,listen: false).address;
               var orderItems= buildOrderItems(cart.items, products);
+              print(address.postalcode);
               Map<String,dynamic> order = {
                 "orderItems":orderItems,
                 "totalPrice":totalPrice,

@@ -20,9 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
   static const List<Widget> _pages = <Widget>[
     MainScreen(),
     CartScreen(),
+    OrderScreen(),
     SettingsScreen(),
     ProfileScreen(),
-    OrderScreen(),
+
   ];
 
 
@@ -55,6 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Cart',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.local_shipping),
+            label: 'Order',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',
           ),
@@ -62,10 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Order',
-          ),
+
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
