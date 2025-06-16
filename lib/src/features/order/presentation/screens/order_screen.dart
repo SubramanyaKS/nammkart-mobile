@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:nammkart/src/features/auth/presentation/provider/user_provider.dart';
 import 'package:nammkart/src/features/order/presentation/providers/order_provider.dart';
 import 'package:provider/provider.dart';
@@ -59,6 +60,12 @@ class _OrderScreenState extends State<OrderScreen> {
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(orderItem.totalPrice.toString()),
+                  trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(DateFormat("yyyy-MM-dd").format(orderItem.orderedAt!))
+                    ],
+                  ),
                   ),
                 );
               },

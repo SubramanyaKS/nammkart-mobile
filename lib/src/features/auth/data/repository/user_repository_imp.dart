@@ -1,5 +1,4 @@
 import 'package:nammkart/src/features/auth/data/datasource/user_remote_datasource.dart';
-import 'package:nammkart/src/features/auth/data/models/user_model.dart';
 import 'package:nammkart/src/features/auth/domain/entities/user.dart';
 import 'package:nammkart/src/features/auth/domain/repository/user_repository.dart';
 

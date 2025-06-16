@@ -6,6 +6,7 @@ import 'package:nammkart/src/features/auth/presentation/provider/user_provider.d
 import 'package:nammkart/src/features/cart/domain/entities/cart.dart';
 import 'package:nammkart/src/features/cart/presentation/provider/cart_provider.dart';
 import 'package:nammkart/src/features/order/presentation/providers/order_provider.dart';
+import 'package:nammkart/src/features/order/presentation/screens/order_placed.dart';
 import 'package:nammkart/src/features/product/domain/entities/product.dart';
 import 'package:nammkart/src/features/product/presentation/provider/product_provider.dart';
 import 'package:provider/provider.dart';
@@ -112,7 +113,6 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               final products = Provider.of<ProductProvider>(context, listen: false).products;
               final address = Provider.of<AddressProvider>(context,listen: false).address;
               var orderItems= buildOrderItems(cart.items, products);
-              print(address.postalcode);
               Map<String,dynamic> order = {
                 "orderItems":orderItems,
                 "totalPrice":totalPrice,
@@ -120,6 +120,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 "paymentMethod":_selectedPayment,
               };
               await orderProvider.addOrder(token,order);
+               Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => OrderPlaced()));
+                   
 
             })
           ],

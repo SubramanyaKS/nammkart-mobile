@@ -15,9 +15,6 @@ class _SignupScreenState extends State<SignupScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void signup() {
-    // TODO: Add signup logic
-  }
 
 
   @override

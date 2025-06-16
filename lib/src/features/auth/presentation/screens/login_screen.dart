@@ -3,7 +3,6 @@ import 'package:nammkart/src/features/auth/presentation/provider/user_provider.d
 import 'package:nammkart/src/features/auth/presentation/screens/signup_screen.dart';
 import 'package:nammkart/src/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:nammkart/src/config/common/custom_button.dart';
-import 'package:nammkart/src/features/home/presentation/screens/home_screen.dart';
 import 'package:nammkart/src/features/home/presentation/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -17,10 +16,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
-  void login() {
-    // TODO: Add login logic
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +82,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   }
                   catch(error)
                   {
-                    print("Called");
                     if (!context.mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text(error.toString())),

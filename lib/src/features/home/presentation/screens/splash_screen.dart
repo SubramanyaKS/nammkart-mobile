@@ -6,6 +6,8 @@ import 'package:nammkart/src/features/product/presentation/provider/product_prov
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }

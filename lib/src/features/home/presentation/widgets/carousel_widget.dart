@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:nammkart/src/features/home/presentation/widgets/widget_Item.dart';
+import 'package:nammkart/src/features/home/presentation/widgets/widget_item.dart';
 
 class CarouselWidget extends StatelessWidget {
   const CarouselWidget({super.key});

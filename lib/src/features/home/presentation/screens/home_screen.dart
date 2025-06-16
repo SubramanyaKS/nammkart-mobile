@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nammkart/src/features/auth/presentation/screens/profile_screen.dart';
 import 'package:nammkart/src/features/cart/presentation/screens/cart_screen.dart';
 import 'package:nammkart/src/features/home/presentation/screens/main_screen.dart';
-import 'package:nammkart/src/features/order/presentation/screens/order_placed.dart';
 import 'package:nammkart/src/features/order/presentation/screens/order_screen.dart';
 import 'package:nammkart/src/features/settings/presentation/screens/settings_screen.dart';
 
