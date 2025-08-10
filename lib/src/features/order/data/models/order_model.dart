@@ -41,8 +41,7 @@ class OrderModel extends OrderEntity {
  Map<String, dynamic> toJson() {
     return {
       'orderItems': orderItems
-          .map((item) => (item as OrderItemModel).toJson())
-          .toList(),
+          .map((item) => (item as OrderItemModel).toJson()),
       'userID': userID,
       'orderId':orderId,
       'totalPrice': totalPrice,

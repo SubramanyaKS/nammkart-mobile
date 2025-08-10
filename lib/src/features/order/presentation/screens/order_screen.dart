@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nammkart/src/features/auth/presentation/provider/user_provider.dart';
 import 'package:nammkart/src/features/order/presentation/providers/order_provider.dart';
+import 'package:nammkart/src/features/order/presentation/screens/view_order.dart';
 import 'package:provider/provider.dart';
 
 class OrderScreen extends StatefulWidget {
@@ -60,6 +61,10 @@ class _OrderScreenState extends State<OrderScreen> {
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(orderItem.totalPrice.toString()),
+                    onTap: (){
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => ViewOrder(orderId:orderItem.orderId)));
+                    },
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
