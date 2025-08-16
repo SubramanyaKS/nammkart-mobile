@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:nammkart/src/features/auth/presentation/provider/user_provider.dart';
 import 'package:nammkart/src/features/order/domain/entities/order.dart';
 import 'package:nammkart/src/features/order/presentation/providers/order_provider.dart';
+import 'package:nammkart/src/features/order/presentation/widgets/order_items_list.dart';
+import 'package:nammkart/src/features/order/presentation/widgets/order_summary.dart';
+import 'package:nammkart/src/features/order/presentation/widgets/shipping_address.dart';
 import 'package:provider/provider.dart';
 
 class ViewOrder extends StatefulWidget {
@@ -19,6 +22,9 @@ class _ViewOrderState extends State<ViewOrder> {
      final token=Provider.of<UserProvider>(context,listen:false).authenticate;
     final orderProvider = Provider.of<OrderProvider>(context);
     return Scaffold(
+      appBar: AppBar(
+        title: Text('View Order Details'),
+      ),
       body:SingleChildScrollView(
         child:  FutureBuilder<OrderEntity>(
             future: orderProvider.getOrderById(token,widget.orderId),
@@ -35,18 +41,21 @@ class _ViewOrderState extends State<ViewOrder> {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(order.orderId),
-                
+                    OrderSummary(order: order),
+                    ShippingAddress(order: order),
+                    OrderItemsList(order: order),
+                    
+
+                    // Text(order.shippingAddress.toString()),
                 ],
                 ),
               );
             }
               )
-
       )
-
-
     );
   }
 }
