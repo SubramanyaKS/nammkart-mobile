@@ -47,8 +47,6 @@ class _ViewOrderState extends State<ViewOrder> {
                     OrderSummary(order: order),
                     ShippingAddress(order: order),
                     OrderItemsList(order: order),
-                    
-
                     // Text(order.shippingAddress.toString()),
                 ],
                 ),

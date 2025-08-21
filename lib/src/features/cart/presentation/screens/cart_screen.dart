@@ -36,12 +36,8 @@ void didChangeDependencies() {
     final cart = Provider.of<CartProvider>(context);
     final productCache = Provider.of<ProductProvider>(context);
     final totalPrice = context.watch<CartProvider>().totalPrice;
-    // cart.getTotalPriceAsync(productCache.products);
-    // print(total);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
         title: Text('My Cart'),
       ),
       body: Column(children: [

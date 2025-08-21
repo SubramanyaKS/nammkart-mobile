@@ -4,6 +4,7 @@ import 'package:nammkart/src/features/cart/presentation/screens/cart_screen.dart
 import 'package:nammkart/src/features/home/presentation/screens/main_screen.dart';
 import 'package:nammkart/src/features/order/presentation/screens/order_screen.dart';
 import 'package:nammkart/src/features/settings/presentation/screens/settings_screen.dart';
+import 'package:nammkart/src/features/wishlist/presentation/screens/wishlist_screen.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -19,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   static const List<Widget> _pages = <Widget>[
     MainScreen(),
     CartScreen(),
+    WishlistScreen(),
     OrderScreen(),
     SettingsScreen(),
     ProfileScreen(),
@@ -53,6 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Cart',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Wishlist',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.local_shipping),

@@ -38,7 +38,6 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     Image.network(product.imageUrl,width: 400,height: 400,fit: BoxFit.cover,),
                     Text(product.category, style: TextStyle(color: Colors.purpleAccent,fontSize: 20,fontWeight: FontWeight.bold),),
                     Text(product.productName, style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
