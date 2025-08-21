@@ -15,6 +15,9 @@ import 'package:nammkart/src/features/product/data/repository/product_repository
 import 'package:nammkart/src/features/product/presentation/provider/product_provider.dart';
 import 'package:nammkart/src/config/theme/provider/theme_provider.dart';
 import 'package:nammkart/src/config/theme/util/theme.dart';
+import 'package:nammkart/src/features/wishlist/data/datasource/wishlist_remote_datasource.dart';
+import 'package:nammkart/src/features/wishlist/data/repository/wishlistlist_repository_impl.dart';
+import 'package:nammkart/src/features/wishlist/presentation/providers/wishlist_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:nammkart/src/features/home/presentation/screens/welcome_screen.dart';
 
@@ -25,6 +28,7 @@ void main() async{
   final userRepository = UserRepositoryImp(UserRemoteDatasource());
   final addressRepository = AddressRepositoryImp(AddressRemoteDatasource());
   final orderRepository = OrderRepositoryImp(OrderRemoteDatasource());
+  final wishlistRepository =WishlistRepositoryImpl(WishlistRemoteDatasource());
   runApp( MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => ThemeProvider()),
@@ -32,7 +36,8 @@ void main() async{
       ChangeNotifierProvider(create: (_) => ProductProvider(repository: productRepository)),
       ChangeNotifierProvider(create: (_) => CartProvider()),
       ChangeNotifierProvider(create: (_) => UserProvider(userRepository)),
-    ChangeNotifierProvider(create: (_)=>OrderProvider(orderRepository: orderRepository))
+      ChangeNotifierProvider(create: (_)=>OrderProvider(orderRepository: orderRepository)),
+      ChangeNotifierProvider(create: (_)=> WishlistProvider(wishlistRepository: wishlistRepository))
     ],
     child: MyApp(),
   ),);
