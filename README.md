@@ -18,6 +18,7 @@
 - Theme support (light/dark)
 - State management using Provider
 - REST API integration (Node.js + MongoDB backend)
+- Wishlist functionslity
 
 ---
 
@@ -34,7 +35,6 @@
 - Express.js
 - MongoDB / Mongoose
 - JWT Authentication
-- Cloudinary for images
 
 ---
 ## ⚙️ Getting Started
@@ -61,15 +61,14 @@ Ensure you have an Android/iOS emulator or device connected.
 Create a .env file (or use dotenv in backend) and add your API base URL and keys for services like Cloudinary if required.
 
 ### 🧪 TODO / Upcoming Features
-1. Wishlist functionality
 
-2. Payment gateway integration
+1. Payment gateway integration
 
-3. Order tracking
+2. Order tracking
 
-4. Notifications
+3. Notifications
 
-5. Reviews and Ratings
+4. Reviews and Ratings
 
 ## 🤝 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
