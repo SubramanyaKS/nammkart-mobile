@@ -22,23 +22,30 @@ class _AddressScreenState extends State<AddressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          // automaticallyImplyLeading: false,
-          title: Text(
-            'Add Address',
-          ),
+      appBar: AppBar(
+        // automaticallyImplyLeading: false,
+        title: Text(
+          'Add Address',
         ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SizedBox(height: 10,),
-              Text('Add Address',style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),),
-              SizedBox(height: 30,),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Add Address',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
               AddressForm(
                   buttonTitle: 'Add Address',
                   streetController: streetController,
@@ -47,9 +54,10 @@ class _AddressScreenState extends State<AddressScreen> {
                   postalcodeController: postalcodeController,
                   stateController: stateController,
                   onPress: () {
-                    final userId = Provider.of<UserProvider>(context, listen: false)
-                        .users
-                        .userId;
+                    final userId =
+                        Provider.of<UserProvider>(context, listen: false)
+                            .users
+                            .userId;
                     final addressProvider =
                         Provider.of<AddressProvider>(context, listen: false);
                     final Map<String, dynamic> addressData = {

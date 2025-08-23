@@ -37,12 +37,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false,
-      //   title: Text(
-      //     'NammKart',
-      //   ),
-      // ),
       body: Center(
         child: _pages[_selectedIndex],
       ),

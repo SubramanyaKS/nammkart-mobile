@@ -2,7 +2,7 @@ import 'package:nammkart/src/features/wishlist/data/models/wishlistentry_model.d
 import 'package:nammkart/src/features/wishlist/domain/entities/wishlist.dart';
 
 class WishlistModel extends WishlistEntity {
-  WishlistModel({required super.items,super.userId});
+  WishlistModel({required super.items, super.userId});
 
   factory WishlistModel.fromJson(Map<String, dynamic> json) {
     return WishlistModel(
@@ -18,5 +18,4 @@ class WishlistModel extends WishlistEntity {
       'items': items.map((e) => (e as WishlistEntryModel).toJson()).toList(),
     };
   }
-
 }

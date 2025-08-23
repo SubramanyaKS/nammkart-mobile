@@ -1,6 +1,6 @@
 import 'package:nammkart/src/features/product/domain/entities/product.dart';
 
-class ProductModel extends ProductEntity{
+class ProductModel extends ProductEntity {
   ProductModel({
     required super.productID,
     required super.productName,
@@ -54,5 +54,4 @@ class ProductModel extends ProductEntity{
       'discountPrice': discountPrice,
     };
   }
-
 }

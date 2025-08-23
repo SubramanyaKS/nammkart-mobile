@@ -8,5 +8,11 @@ class UserEntity {
   final String? role;
 
   UserEntity(
-      {required this.username, required this.email, required this.password, this.phoneNumber, required this.userId, this.profileUrl, this.role});
+      {required this.username,
+      required this.email,
+      required this.password,
+      this.phoneNumber,
+      required this.userId,
+      this.profileUrl,
+      this.role});
 }

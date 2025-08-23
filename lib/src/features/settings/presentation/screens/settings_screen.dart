@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nammkart/src/features/about/presentation/about_screen.dart';
 import 'package:provider/provider.dart';
-
-import '../../../../config/theme/provider/theme_provider.dart';
+import 'package:nammkart/src/config/theme/provider/theme_provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -12,7 +11,6 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -38,15 +36,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                         title: Text('Theme'),
                         subtitle: Text('dark mode or light mode'),
-                        trailing: Switch(value: themeProvider.isDarkMode,
+                        trailing: Switch(
+                          value: themeProvider.isDarkMode,
                           onChanged: (_) => themeProvider.toggleTheme(),
                         ),
-                        onTap: () {
-                        },
+                        onTap: () {},
                       ),
                     ],
-                  )
-              ),
+                  )),
               Text(
                 'Privacy',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -66,8 +63,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       subtitle: Text('View our privacy policy'),
                       trailing: Icon(Icons.arrow_forward),
-                      onTap: () {
-                      },
+                      onTap: () {},
                     ),
                     ListTile(
                       leading: Icon(
@@ -77,8 +73,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       title: Text('Terms of Services'),
                       subtitle: Text('View our terms and conditions'),
                       trailing: Icon(Icons.arrow_forward),
-                      onTap: () {
-                      },
+                      onTap: () {},
                     ),
                   ],
                 ),
@@ -102,7 +97,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (_) => AboutScreen()));
-
                         },
                       ),
                       ListTile(
@@ -113,12 +107,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         title: Text('App version'),
                         subtitle: Text('v1.0.0'),
                         trailing: Icon(Icons.arrow_forward),
-                        onTap: () {
-                        },
+                        onTap: () {},
                       ),
                     ],
-                  )
-              )
+                  ))
             ],
           ),
         ),

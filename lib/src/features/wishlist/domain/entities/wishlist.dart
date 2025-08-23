@@ -4,6 +4,5 @@ class WishlistEntity {
   final String? userId;
   final List<WishlistEntryEntity> items;
 
-  WishlistEntity({this.userId,required this.items});
-  
+  WishlistEntity({this.userId, required this.items});
 }

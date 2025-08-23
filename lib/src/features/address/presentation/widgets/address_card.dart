@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:nammkart/src/features/address/presentation/screen/edit_address_screen.dart';
 
 class AddressCard extends StatelessWidget {
-  const AddressCard({super.key, required this.street, required this.city, required this.state, required this.country, required this.postalCode});
+  const AddressCard(
+      {super.key,
+      required this.street,
+      required this.city,
+      required this.state,
+      required this.country,
+      required this.postalCode});
 
   final String street;
   final String city;
@@ -23,7 +29,6 @@ class AddressCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             const SizedBox(height: 12),
             Row(
               children: [
@@ -41,8 +46,6 @@ class AddressCard extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (_) => const EditAddress()));
-
-
                   },
                 ),
               ],

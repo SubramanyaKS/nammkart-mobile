@@ -8,9 +8,14 @@ class ViewAddress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final address = Provider.of<AddressProvider>(context,listen: false).address;
-    return AddressCard(street:address.street!,city:address.city!,state:address.state,country:address.country,
-          postalCode:address.postalcode,
+    final address =
+        Provider.of<AddressProvider>(context, listen: false).address;
+    return AddressCard(
+      street: address.street!,
+      city: address.city!,
+      state: address.state,
+      country: address.country,
+      postalCode: address.postalcode,
     );
   }
 }

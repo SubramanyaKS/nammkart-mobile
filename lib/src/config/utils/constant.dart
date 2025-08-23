@@ -1,3 +1,3 @@
 class Constant {
-  static const String title ='NammKart';
+  static const String title = 'NammKart';
 }

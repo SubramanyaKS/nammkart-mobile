@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-void showCustomAlert(BuildContext context, {
+void showCustomAlert(
+  BuildContext context, {
   required String title,
   required String content,
   required String action1Text,

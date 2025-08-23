@@ -2,7 +2,7 @@ import 'dart:convert';
 
 class Helper {
   static String extractTokenContent(String token) {
-   final parts = token.split('.');
+    final parts = token.split('.');
     if (parts.length != 3) {
       throw Exception('Invalid token format');
     }

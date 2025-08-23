@@ -11,20 +11,17 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-
   @override
   Widget build(BuildContext context) {
     final productProvider = Provider.of<ProductProvider>(context);
 
     return Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-
         appBar: AppBar(title: Text('Products')),
-      body: productProvider.filteredProducts.isNotEmpty?
-          ProductList(products: productProvider.filteredProducts):
-      productProvider.products.isEmpty
-          ? Center(child: CircularProgressIndicator())
-          : ProductList(products: productProvider.products)
-    );
+        body: productProvider.filteredProducts.isNotEmpty
+            ? ProductList(products: productProvider.filteredProducts)
+            : productProvider.products.isEmpty
+                ? Center(child: CircularProgressIndicator())
+                : ProductList(products: productProvider.products));
   }
 }

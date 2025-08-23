@@ -1,7 +1,6 @@
 import 'package:nammkart/src/features/product/domain/entities/category.dart';
 
 class CategoryModel extends CategoryEntity {
-
   CategoryModel({
     required super.name,
     required super.description,
@@ -20,7 +19,7 @@ class CategoryModel extends CategoryEntity {
     return {
       'name': name,
       'description': description,
-      'imageUrl':imageUrl,
+      'imageUrl': imageUrl,
     };
   }
 }

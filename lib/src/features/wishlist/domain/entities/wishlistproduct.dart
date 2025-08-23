@@ -4,6 +4,9 @@ class WishlistProductEntity {
   final String imageUrl;
   final String? productId;
 
-  WishlistProductEntity({this.productId,required this.id, required this.productName, required this.imageUrl});
-
+  WishlistProductEntity(
+      {this.productId,
+      required this.id,
+      required this.productName,
+      required this.imageUrl});
 }

@@ -22,19 +22,22 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> initializeApp() async {
     try {
       final userProvider = Provider.of<UserProvider>(context, listen: false);
-      final productProvider = Provider.of<ProductProvider>(context, listen: false);
-      final addressProvider = Provider.of<AddressProvider>(context,listen:false);
+      final productProvider =
+          Provider.of<ProductProvider>(context, listen: false);
+      final addressProvider =
+          Provider.of<AddressProvider>(context, listen: false);
 
       await userProvider.userByEmail();
       await productProvider.fetchProducts();
       await productProvider.fetchCategory();
       await addressProvider.getAddress(userProvider.users.userId);
 
-       Navigator.of(context).pushReplacement(
+      Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (_) => HomeScreen()),
       );
     } catch (e) {
       // Handle error if needed
+      throw Exception(e);
     }
   }
 

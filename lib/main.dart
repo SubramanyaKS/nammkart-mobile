@@ -21,26 +21,33 @@ import 'package:nammkart/src/features/wishlist/presentation/providers/wishlist_p
 import 'package:provider/provider.dart';
 import 'package:nammkart/src/features/home/presentation/screens/welcome_screen.dart';
 
-void main() async{
+void main() async {
   await Environment.load();
   // WidgetsFlutterBinding.ensureInitialized();
   final productRepository = ProductRepositoryImp(ProductRemoteDatasource());
   final userRepository = UserRepositoryImp(UserRemoteDatasource());
   final addressRepository = AddressRepositoryImp(AddressRemoteDatasource());
   final orderRepository = OrderRepositoryImp(OrderRemoteDatasource());
-  final wishlistRepository =WishlistRepositoryImpl(WishlistRemoteDatasource());
-  runApp( MultiProvider(
-    providers: [
-      ChangeNotifierProvider(create: (_) => ThemeProvider()),
-      ChangeNotifierProvider(create: (_) => AddressProvider(addressRepository)),
-      ChangeNotifierProvider(create: (_) => ProductProvider(repository: productRepository)),
-      ChangeNotifierProvider(create: (_) => CartProvider()),
-      ChangeNotifierProvider(create: (_) => UserProvider(userRepository)),
-      ChangeNotifierProvider(create: (_)=>OrderProvider(orderRepository: orderRepository)),
-      ChangeNotifierProvider(create: (_)=> WishlistProvider(wishlistRepository: wishlistRepository))
-    ],
-    child: MyApp(),
-  ),);
+  final wishlistRepository = WishlistRepositoryImpl(WishlistRemoteDatasource());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(
+            create: (_) => AddressProvider(addressRepository)),
+        ChangeNotifierProvider(
+            create: (_) => ProductProvider(repository: productRepository)),
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider(userRepository)),
+        ChangeNotifierProvider(
+            create: (_) => OrderProvider(orderRepository: orderRepository)),
+        ChangeNotifierProvider(
+            create: (_) =>
+                WishlistProvider(wishlistRepository: wishlistRepository))
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -53,9 +60,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NammKart',
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: themeProvider.themeMode,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: themeProvider.themeMode,
       home: const WelcomeScreen(),
     );
   }

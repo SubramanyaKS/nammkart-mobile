@@ -1,6 +1,6 @@
 import 'package:nammkart/src/features/auth/domain/entities/user.dart';
 
-class UserModel extends UserEntity{
+class UserModel extends UserEntity {
   UserModel({
     required super.userId,
     required super.email,
@@ -9,7 +9,7 @@ class UserModel extends UserEntity{
     super.phoneNumber,
     super.profileUrl,
     super.role,
-});
+  });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(

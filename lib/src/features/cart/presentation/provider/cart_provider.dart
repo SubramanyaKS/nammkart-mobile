@@ -1,10 +1,10 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:nammkart/src/features/cart/domain/entities/cart.dart';
 import 'package:nammkart/src/features/product/domain/entities/product.dart';
 
-class CartProvider with ChangeNotifier{
+class CartProvider with ChangeNotifier {
   final List<CartEntity> _items = [];
-  double _totalPrice=0.0;
+  double _totalPrice = 0.0;
 
   List<CartEntity> get items => _items;
   double get totalPrice => _totalPrice;
@@ -20,13 +20,13 @@ class CartProvider with ChangeNotifier{
   }
 
   void getTotalPriceAsync(
-      List<ProductEntity> products,
+    List<ProductEntity> products,
   ) async {
     double total = 0.0;
 
     for (var cartItem in _items) {
-      final product = products.firstWhere(
-          (prod) => prod.productID == cartItem.productId);
+      final product =
+          products.firstWhere((prod) => prod.productID == cartItem.productId);
       double discount = product.price;
       if (product.discountPrice != null) {
         discount = product.discountPrice!;
@@ -34,9 +34,8 @@ class CartProvider with ChangeNotifier{
 
       total += discount * cartItem.quantity;
     }
-    print(total);
 
-    _totalPrice=total;
+    _totalPrice = total;
     notifyListeners();
   }
 

@@ -39,45 +39,51 @@ class _OrderScreenState extends State<OrderScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('My Orders')),
       body: SafeArea(
-          child: _isLoading
-              ? const Center(child: CircularProgressIndicator())
-              : order.orders.isEmpty
-              ? const Center(child: Text('No orders found.'))
-              : Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: order.orders.length,
-              itemBuilder: (context, index) {
-                final orderItem = order.orders[index];
-                return Card(
-                  color: Theme.of(context).cardColor,
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                  child: ListTile(
-                    title: Text(
-                      'order ${orderItem.orderId}',
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(orderItem.totalPrice.toString()),
-                    onTap: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => ViewOrder(orderId:orderItem.orderId)));
-                    },
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
+        child: _isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : order.orders.isEmpty
+                ? const Center(child: Text('No orders found.'))
+                : Column(
                     children: [
-                      Text(DateFormat("yyyy-MM-dd").format(orderItem.orderedAt!))
+                      Expanded(
+                        child: ListView.builder(
+                          itemCount: order.orders.length,
+                          itemBuilder: (context, index) {
+                            final orderItem = order.orders[index];
+                            return Card(
+                              color: Theme.of(context).cardColor,
+                              margin: const EdgeInsets.symmetric(
+                                  vertical: 8, horizontal: 16),
+                              child: ListTile(
+                                title: Text(
+                                  'order ${orderItem.orderId}',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Text(orderItem.totalPrice.toString()),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => ViewOrder(
+                                              orderId: orderItem.orderId)));
+                                },
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(DateFormat("yyyy-MM-dd")
+                                        .format(orderItem.orderedAt!))
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      )
                     ],
                   ),
-                  ),
-                );
-              },
-            ),
-          )
-        ],
-      )),
+      ),
     );
   }
 }

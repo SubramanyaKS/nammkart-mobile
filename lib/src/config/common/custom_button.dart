@@ -13,7 +13,10 @@ class CustomButton extends StatelessWidget {
         backgroundColor: Colors.deepPurple,
         minimumSize: const Size(double.infinity, 50),
       ),
-      child: Text(title,style: TextStyle(color: Colors.white),),
+      child: Text(
+        title,
+        style: TextStyle(color: Colors.white),
+      ),
     );
   }
 }

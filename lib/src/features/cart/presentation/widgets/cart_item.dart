@@ -20,7 +20,7 @@ class CartItem extends StatelessWidget {
         itemCount: cart.items.length,
         itemBuilder: (context, index) {
           final cartItem = cart.items[index];
-    
+
           return FutureBuilder(
             future: productCache.fetchSingleProduct(cartItem.productId),
             builder: (context, snapshot) {
@@ -30,38 +30,33 @@ class CartItem extends StatelessWidget {
               final product = snapshot.data!;
               return Card(
                 color: Theme.of(context).cardColor,
-                margin:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: ListTile(
                   leading: Image.network(product.imageUrl, width: 60),
-                  title: Text(product.productName,style: TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
+                  title: Text(
+                    product.productName,
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     "₹${product.isDiscount! ? product.discountPrice : product.price}",
-                    style: TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   trailing: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.remove),
-                        onPressed: () =>
-                        {
-                          cart.decreaseQuantity(product.productID),
-                          cart.getTotalPriceAsync(productCache.products),
-                        }
-                      ),
+                          icon: const Icon(Icons.remove),
+                          onPressed: () => {
+                                cart.decreaseQuantity(product.productID),
+                                cart.getTotalPriceAsync(productCache.products),
+                              }),
                       Text('${cartItem.quantity}'),
                       IconButton(
-                        icon: const Icon(Icons.add),
-                        onPressed: () =>
-                        {
-                          cart.increaseQuantity(product.productID),
-                          cart.getTotalPriceAsync(productCache.products),
-                        }
-                      ),
+                          icon: const Icon(Icons.add),
+                          onPressed: () => {
+                                cart.increaseQuantity(product.productID),
+                                cart.getTotalPriceAsync(productCache.products),
+                              }),
                       IconButton(
                           icon: const Icon(
                             Icons.delete,
@@ -78,8 +73,9 @@ class CartItem extends StatelessWidget {
                                   action2Text: 'Yes',
                                   onAction2: () {
                                     Navigator.pop(context);
-                                      cart.removeFromCart(product.productID);
-                                      cart.getTotalPriceAsync(productCache.products);
+                                    cart.removeFromCart(product.productID);
+                                    cart.getTotalPriceAsync(
+                                        productCache.products);
                                     // Your action here
                                   },
                                 ),

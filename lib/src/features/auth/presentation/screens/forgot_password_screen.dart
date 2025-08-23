@@ -27,7 +27,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text('Receive an Email to reset your password',style: TextStyle(fontSize: 16),),
+                Text(
+                  'Receive an Email to reset your password',
+                  style: TextStyle(fontSize: 16),
+                ),
                 const SizedBox(height: 32),
                 TextField(
                   controller: emailController,
@@ -37,9 +40,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   ),
                   keyboardType: TextInputType.emailAddress,
                 ),
-                const SizedBox(height: 30,),
-                CustomButton(title: 'Proceed', onPress: (){
-                },),
+                const SizedBox(
+                  height: 30,
+                ),
+                CustomButton(
+                  title: 'Proceed',
+                  onPress: () {},
+                ),
               ],
             ),
           ),
@@ -48,4 +55,3 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     );
   }
 }
-

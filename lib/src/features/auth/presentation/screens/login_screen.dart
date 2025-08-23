@@ -19,7 +19,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Padding(
@@ -57,43 +56,52 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(
-                        onPressed: (){
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => const ForgotPasswordScreen()));
-                        },
-                        child: Text('Forgot Password?',style: TextStyle(color: Colors.deepPurple),),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const ForgotPasswordScreen()));
+                      },
+                      child: Text(
+                        'Forgot Password?',
+                        style: TextStyle(color: Colors.deepPurple),
+                      ),
                     ),
                   ],
                 ),
                 const SizedBox(height: 30),
-                CustomButton(title: 'Login', onPress: () async{
-                  try{
-                    final userProvider = Provider.of<UserProvider>(context,listen: false);
-                    final Map<String, dynamic> signupData = {
-                      'email': emailController.text.trim(),
-                      'password': passwordController.text.trim(),
-                    };
-                    await userProvider.userLogin(signupData);
-                    if(userProvider.authenticate.isNotEmpty){
-                      if (!context.mounted) return;
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => SplashScreen()));
-                    }
-                  }
-                  catch(error)
-                  {
-                    if (!context.mounted) return;
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text(error.toString())),
-                    );
-                  }
-
-                }),
+                CustomButton(
+                    title: 'Login',
+                    onPress: () async {
+                      try {
+                        final userProvider =
+                            Provider.of<UserProvider>(context, listen: false);
+                        final Map<String, dynamic> signupData = {
+                          'email': emailController.text.trim(),
+                          'password': passwordController.text.trim(),
+                        };
+                        await userProvider.userLogin(signupData);
+                        if (userProvider.authenticate.isNotEmpty) {
+                          if (!context.mounted) return;
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => SplashScreen()));
+                        }
+                      } catch (error) {
+                        if (!context.mounted) return;
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(error.toString())),
+                        );
+                      }
+                    }),
                 const SizedBox(height: 16),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const SignupScreen()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const SignupScreen()));
                   },
                   child: const Text("Don't have an account? Sign Up"),
                 )

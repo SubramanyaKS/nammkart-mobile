@@ -1,4 +1,4 @@
-class AddressEntity{
+class AddressEntity {
   final String userId;
   final String? street;
   final String? city;
@@ -6,6 +6,11 @@ class AddressEntity{
   final String postalcode;
   final String country;
 
-  AddressEntity({required this.userId, this.city,this.street,required this.postalcode,required this.state,required this.country});
-
+  AddressEntity(
+      {required this.userId,
+      this.city,
+      this.street,
+      required this.postalcode,
+      required this.state,
+      required this.country});
 }

@@ -4,8 +4,7 @@ import 'package:nammkart/src/features/product/domain/entities/product.dart';
 import 'package:nammkart/src/features/product/domain/repository/product_repository.dart';
 
 class ProductProvider with ChangeNotifier {
-
-final ProductRepository repository;
+  final ProductRepository repository;
 
   ProductProvider({required this.repository});
 
@@ -15,23 +14,25 @@ final ProductRepository repository;
 
   List<ProductEntity> get products => _products;
   List<CategoryEntity> get category => _category;
-  List<ProductEntity> get filteredProducts =>_filteredProducts;
+  List<ProductEntity> get filteredProducts => _filteredProducts;
 
-  List<ProductEntity>  getTopProducts() {
+  List<ProductEntity> getTopProducts() {
     return _products.take(5).toList();
   }
-  List<ProductEntity> getTopRatedProducts(){
-    List<ProductEntity> data = List.from(_products)..sort((a, b) => b.rating.compareTo(a.rating));
+
+  List<ProductEntity> getTopRatedProducts() {
+    List<ProductEntity> data = List.from(_products)
+      ..sort((a, b) => b.rating.compareTo(a.rating));
     return data.take(5).toList();
   }
 
-   Future<void> searchProducts(String query) async {
+  Future<void> searchProducts(String query) async {
     if (query.isEmpty) {
       _filteredProducts = _products;
     } else {
       _filteredProducts = _products
           .where((product) =>
-          product.productName.toLowerCase().contains(query.toLowerCase()))
+              product.productName.toLowerCase().contains(query.toLowerCase()))
           .toList();
     }
     notifyListeners();
@@ -39,7 +40,7 @@ final ProductRepository repository;
 
   Future<void> fetchProducts() async {
     var data = await repository.fetchAllProducts();
-    _products=data;
+    _products = data;
     notifyListeners();
   }
 
@@ -49,7 +50,7 @@ final ProductRepository repository;
     } else {
       _filteredProducts = _products
           .where((product) =>
-          product.category.toLowerCase().contains(category.toLowerCase()))
+              product.category.toLowerCase().contains(category.toLowerCase()))
           .toList();
     }
     notifyListeners();
@@ -57,7 +58,7 @@ final ProductRepository repository;
 
   Future<void> fetchCategory() async {
     var data = await repository.fetchAllCategory();
-    _category=data;
+    _category = data;
     notifyListeners();
   }
 
@@ -65,5 +66,4 @@ final ProductRepository repository;
     var prod = await repository.fetchProductByID(productId);
     return prod;
   }
-
 }

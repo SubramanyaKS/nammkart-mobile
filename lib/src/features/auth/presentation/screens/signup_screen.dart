@@ -15,8 +15,6 @@ class _SignupScreenState extends State<SignupScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-
-
   @override
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
@@ -63,21 +61,19 @@ class _SignupScreenState extends State<SignupScreen> {
                   obscureText: true,
                 ),
                 const SizedBox(height: 24),
-                CustomButton(title: 'Sign Up',
-                    onPress: (){
-                  final Map<String, dynamic> signupData = {
-                    'username': nameController.text,
-                    'email': emailController.text,
-                    'password': passwordController.text,
-                  };
-                  userProvider.userRegister(signupData);
-
-                }
-                ),
+                CustomButton(
+                    title: 'Sign Up',
+                    onPress: () {
+                      final Map<String, dynamic> signupData = {
+                        'username': nameController.text,
+                        'email': emailController.text,
+                        'password': passwordController.text,
+                      };
+                      userProvider.userRegister(signupData);
+                    }),
                 const SizedBox(height: 16),
                 TextButton(
-                  onPressed: () {
-                     },
+                  onPressed: () {},
                   child: const Text("Already have an account? Login"),
                 )
               ],

@@ -9,14 +9,13 @@ class AppTheme {
     cardColor: Colors.white,
     textTheme: GoogleFonts.poppinsTextTheme(),
     appBarTheme: const AppBarTheme(
-      elevation: 2,
-      backgroundColor: Colors.deepPurple,
+        elevation: 2,
+        backgroundColor: Colors.deepPurple,
         foregroundColor: Colors.white,
-      shadowColor: Colors.grey,
-      iconTheme: IconThemeData(
-        color: Colors.black45,
-      )
-    ),
+        shadowColor: Colors.grey,
+        iconTheme: IconThemeData(
+          color: Colors.black45,
+        )),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Colors.white,
       selectedItemColor: Colors.deepPurple,
@@ -26,22 +25,20 @@ class AppTheme {
         seedColor: Colors.deepPurple,
         primary: Colors.deepPurple,
         surface: Colors.white,
-        brightness: Brightness.light
-    ),
+        brightness: Brightness.light),
     cardTheme: CardTheme(
       color: Colors.grey[100],
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       margin: const EdgeInsets.all(12),
     ),
-
-
   );
   static final darkTheme = ThemeData(
     primaryColor: Colors.deepPurple,
     scaffoldBackgroundColor: Color(0xFF121212),
     brightness: Brightness.dark,
-    textTheme: GoogleFonts.poppinsTextTheme(ThemeData(brightness: Brightness.dark).textTheme),
+    textTheme: GoogleFonts.poppinsTextTheme(
+        ThemeData(brightness: Brightness.dark).textTheme),
     cardColor: Colors.deepPurple,
     appBarTheme: const AppBarTheme(
       elevation: 2,
@@ -61,8 +58,7 @@ class AppTheme {
         seedColor: Colors.black45,
         primary: Colors.deepPurple,
         surface: const Color(0xFF121212),
-        brightness: Brightness.dark
-    ),
+        brightness: Brightness.dark),
     cardTheme: CardTheme(
       color: Colors.grey[900],
       elevation: 4,

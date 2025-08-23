@@ -18,18 +18,18 @@ class _CartScreenState extends State<CartScreen> {
   bool _isInit = true;
 
   @override
-void didChangeDependencies() {
-  super.didChangeDependencies();
-  if (_isInit) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final cart = Provider.of<CartProvider>(context,listen: false);
-      final productCache = Provider.of<ProductProvider>(context,listen: false);
-      cart.getTotalPriceAsync(productCache.products);
-    });
-    _isInit = false;
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_isInit) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final cart = Provider.of<CartProvider>(context, listen: false);
+        final productCache =
+            Provider.of<ProductProvider>(context, listen: false);
+        cart.getTotalPriceAsync(productCache.products);
+      });
+      _isInit = false;
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +41,9 @@ void didChangeDependencies() {
         title: Text('My Cart'),
       ),
       body: Column(children: [
-        cart.items.isEmpty?
-        NocartItem()
-        :
-        CartItem(cart: cart, productCache: productCache),
+        cart.items.isEmpty
+            ? NocartItem()
+            : CartItem(cart: cart, productCache: productCache),
         Spacer(),
         Container(
           decoration: BoxDecoration(
@@ -65,21 +64,28 @@ void didChangeDependencies() {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Total:",style: TextStyle(
-                        fontSize: 22, fontWeight: FontWeight.bold),
+                    Text(
+                      "Total:",
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
-                    Text("₹${totalPrice.toString()}",style: TextStyle(
-                                   fontSize: 22, fontWeight: FontWeight.bold),
-                      ),
+                    Text(
+                      "₹${totalPrice.toString()}",
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
                 SizedBox(
                   height: 30,
                 ),
-                CustomButton(title: 'Checkout', onPress: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const CheckoutScreen()));
-
+                CustomButton(
+                  title: 'Checkout',
+                  onPress: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const CheckoutScreen()));
                   },
                 ),
               ],
@@ -90,4 +96,3 @@ void didChangeDependencies() {
     );
   }
 }
-

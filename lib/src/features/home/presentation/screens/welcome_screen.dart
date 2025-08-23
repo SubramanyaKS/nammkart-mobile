@@ -5,7 +5,6 @@ import 'package:nammkart/src/features/auth/presentation/screens/login_screen.dar
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +54,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 child: const Text(
                   'Get Started',
-                  style: TextStyle(fontSize: 18,color: Colors.white),
+                  style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
             ),

@@ -9,12 +9,13 @@ class WishlistRepositoryImpl implements WishlistRepository {
 
   @override
   Future<String> addWishlist(token, productID) =>
-   wishlistRemoteDatasource.addWishlist(token, productID);
+      wishlistRemoteDatasource.addWishlist(token, productID);
 
   @override
-  Future<WishlistEntity> getWishlist(token) => wishlistRemoteDatasource.getWishlist(token);
+  Future<WishlistEntity> getWishlist(token) =>
+      wishlistRemoteDatasource.getWishlist(token);
 
   @override
-  Future<String> deleteWishListProduct(token, productId) =>wishlistRemoteDatasource.deleteWishlist(token, productId);
-
+  Future<String> deleteWishListProduct(token, productId) =>
+      wishlistRemoteDatasource.deleteWishlist(token, productId);
 }

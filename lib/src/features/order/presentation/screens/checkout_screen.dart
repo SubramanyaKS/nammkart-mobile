@@ -21,35 +21,37 @@ class CheckoutScreen extends StatefulWidget {
 class _CheckoutScreenState extends State<CheckoutScreen> {
   String _selectedPayment = 'upi';
 
-   List<Map<String, dynamic>> buildOrderItems(
-  List<CartEntity> cartItems,
-  List<ProductEntity> products,
-) {
-  List<Map<String, dynamic>> orderItems = [];
+  List<Map<String, dynamic>> buildOrderItems(
+    List<CartEntity> cartItems,
+    List<ProductEntity> products,
+  ) {
+    List<Map<String, dynamic>> orderItems = [];
 
-  for (var cartItem in cartItems) {
-    final product = products.firstWhere(
-      (prod) => prod.productID == cartItem.productId,
-    );
+    for (var cartItem in cartItems) {
+      final product = products.firstWhere(
+        (prod) => prod.productID == cartItem.productId,
+      );
 
-    if (product.productID != '') {
-      orderItems.add({
-        "productId": product.productID,
-        "name": product.productName,
-        "image": product.imageUrl,
-        "price": product.price,
-        "quantity": cartItem.quantity,
-      });
+      if (product.productID != '') {
+        orderItems.add({
+          "productId": product.productID,
+          "name": product.productName,
+          "image": product.imageUrl,
+          "price": product.price,
+          "quantity": cartItem.quantity,
+        });
+      }
     }
-  }
 
-  return orderItems;
-}
+    return orderItems;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Checkout'),),
+      appBar: AppBar(
+        title: Text('Checkout'),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -104,27 +106,34 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               ),
               title: const Text('Cash on Delivery'),
             ),
-
-            CustomButton(title: 'Order Now', onPress: () async{
-              final cart = Provider.of<CartProvider>(context, listen: false);
-              final orderProvider=Provider.of<OrderProvider>(context, listen: false);
-              final totalPrice=cart.totalPrice;
-              final token=Provider.of<UserProvider>(context,listen:false).authenticate;
-              final products = Provider.of<ProductProvider>(context, listen: false).products;
-              final address = Provider.of<AddressProvider>(context,listen: false).address;
-              var orderItems= buildOrderItems(cart.items, products);
-              Map<String,dynamic> order = {
-                "orderItems":orderItems,
-                "totalPrice":totalPrice,
-                "shippingAddress":address,
-                "paymentMethod":_selectedPayment,
-              };
-              await orderProvider.addOrder(token,order);
-               Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => OrderPlaced()));
-                   
-
-            })
+            CustomButton(
+                title: 'Order Now',
+                onPress: () async {
+                  final cart =
+                      Provider.of<CartProvider>(context, listen: false);
+                  final orderProvider =
+                      Provider.of<OrderProvider>(context, listen: false);
+                  final totalPrice = cart.totalPrice;
+                  final token =
+                      Provider.of<UserProvider>(context, listen: false)
+                          .authenticate;
+                  final products =
+                      Provider.of<ProductProvider>(context, listen: false)
+                          .products;
+                  final address =
+                      Provider.of<AddressProvider>(context, listen: false)
+                          .address;
+                  var orderItems = buildOrderItems(cart.items, products);
+                  Map<String, dynamic> order = {
+                    "orderItems": orderItems,
+                    "totalPrice": totalPrice,
+                    "shippingAddress": address,
+                    "paymentMethod": _selectedPayment,
+                  };
+                  await orderProvider.addOrder(token, order);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => OrderPlaced()));
+                })
           ],
         ),
       ),

@@ -16,8 +16,9 @@ class SingleProductScreen extends StatefulWidget {
 class _SingleProductScreenState extends State<SingleProductScreen> {
   @override
   Widget build(BuildContext context) {
-    final productProvider = Provider.of<ProductProvider>(context, listen: false);
-    final cartProvider = Provider.of<CartProvider>(context,listen: false);
+    final productProvider =
+        Provider.of<ProductProvider>(context, listen: false);
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -31,43 +32,72 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
               } else if (!snapshot.hasData) {
                 return Center(child: Text("Product not found"));
               }
-        
+
               final product = snapshot.data!;
               return Padding(
                 padding: EdgeInsets.all(16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(product.imageUrl,width: 400,height: 400,fit: BoxFit.cover,),
-                    Text(product.category, style: TextStyle(color: Colors.purpleAccent,fontSize: 20,fontWeight: FontWeight.bold),),
-                    Text(product.productName, style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+                    Image.network(
+                      product.imageUrl,
+                      width: 400,
+                      height: 400,
+                      fit: BoxFit.cover,
+                    ),
+                    Text(
+                      product.category,
+                      style: TextStyle(
+                          color: Colors.purpleAccent,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(product.productName,
+                        style: TextStyle(
+                            fontSize: 30, fontWeight: FontWeight.bold)),
                     Text("Brand: \$${product.brand}"),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Row(
                       children: [
                         RatingStar(rating: product.rating, size: 24),
-                        Text(product.rating.toString(),style: TextStyle(fontSize: 20),),
+                        Text(
+                          product.rating.toString(),
+                          style: TextStyle(fontSize: 20),
+                        ),
                       ],
                     ),
 
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text('₹${product.price}', style: TextStyle(fontSize: 30,decoration: TextDecoration.lineThrough, color: Colors.red, fontWeight: FontWeight.bold)),
-                        Text('₹${product.discountPrice??product.price}', style: TextStyle(fontSize: 30, color: Colors.green, fontWeight: FontWeight.bold)),
+                        Text('₹${product.price}',
+                            style: TextStyle(
+                                fontSize: 30,
+                                decoration: TextDecoration.lineThrough,
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold)),
+                        Text('₹${product.discountPrice ?? product.price}',
+                            style: TextStyle(
+                                fontSize: 30,
+                                color: Colors.green,
+                                fontWeight: FontWeight.bold)),
                       ],
-
                     ),
                     SizedBox(height: 20),
-                    Text(product.description,style: TextStyle(fontSize: 20)),
+                    Text(product.description, style: TextStyle(fontSize: 20)),
                     SizedBox(height: 30),
                     ElevatedButton(
                       onPressed: () {
                         cartProvider.addToCart(product.productID);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('${product.productName} added to cart!'),
+                            content:
+                                Text('${product.productName} added to cart!'),
                             // action: SnackBarAction(
                             //   label: 'Go to Cart',
                             //   onPressed: () {
@@ -87,11 +117,11 @@ class _SingleProductScreenState extends State<SingleProductScreen> {
                       ),
                       child: const Text(
                         'Add to Cart',
-                        style: TextStyle(fontSize: 18,color: Colors.white),
+                        style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
 
-                   // Add more fields as needed
+                    // Add more fields as needed
                   ],
                 ),
               );
