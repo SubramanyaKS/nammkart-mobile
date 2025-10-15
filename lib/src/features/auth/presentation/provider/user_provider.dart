@@ -22,6 +22,10 @@ class UserProvider with ChangeNotifier {
     await userRepository.userSignup(user);
     notifyListeners();
   }
+  Future<void> updateDetails(user) async{
+    await userRepository.userUpdate(user,authenticate);
+    notifyListeners();
+  }
 
   Future<void> userLogin(user) async {
     var data = await userRepository.userLogin(user);

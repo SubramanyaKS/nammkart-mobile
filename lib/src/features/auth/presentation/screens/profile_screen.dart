@@ -3,6 +3,7 @@ import 'package:nammkart/src/features/address/presentation/provider/address_prov
 import 'package:nammkart/src/features/address/presentation/screen/address_screen.dart';
 import 'package:nammkart/src/features/address/presentation/widgets/view_address.dart';
 import 'package:nammkart/src/features/auth/presentation/provider/user_provider.dart';
+import 'package:nammkart/src/features/auth/presentation/screens/edit_profile_screen.dart';
 import 'package:nammkart/src/features/auth/presentation/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -50,7 +51,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: 20,
             ),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const EditProfileScreen()
+                    )
+                );
+              },
               style: ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(Color(0xFFBE185D)),
                   foregroundColor: WidgetStatePropertyAll(Colors.white)),

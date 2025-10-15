@@ -16,4 +16,7 @@ class UserRepositoryImp implements UserRepository {
   @override
   Future<UserEntity> userByEmail(token) =>
       userRemoteDatasource.userByEmail(token);
+
+  @override
+  Future<String> userUpdate(user,token) => userRemoteDatasource.updateUserDetails(user,token);
 }

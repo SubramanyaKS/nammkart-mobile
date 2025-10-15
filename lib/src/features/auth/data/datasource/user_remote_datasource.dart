@@ -20,6 +20,22 @@ class UserRemoteDatasource {
       throw Exception('Error Occured');
     }
   }
+  Future<String> updateUserDetails(user,token) async{
+    final response = await http.patch(Uri.parse(
+        '${Environment.backendUrl}/api/users/auth/user/update'),
+        headers: {
+          'Authorization': 'Bearer $token',
+          "Content-Type": "application/json",
+        },
+        body: jsonEncode(user));
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      return response.body.toString();
+    } else {
+      throw Exception('Error Occured');
+    }
+
+
+  }
 
   Future<String> userLogin(user) async {
     final response = await http.post(

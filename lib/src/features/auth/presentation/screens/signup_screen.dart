@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nammkart/src/features/auth/presentation/provider/user_provider.dart';
 import 'package:nammkart/src/config/common/custom_button.dart';
+import 'package:nammkart/src/features/auth/presentation/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -73,7 +74,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     }),
                 const SizedBox(height: 16),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => LoginScreen()));
+                  },
                   child: const Text("Already have an account? Login"),
                 )
               ],
