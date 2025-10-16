@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nammkart/src/features/auth/presentation/screens/profile_screen.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../config/common/custom_button.dart';
 import '../provider/user_provider.dart';
 
@@ -112,7 +111,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           builder: (_) => const ProfileScreen()
                       )
                   );
-
                 },
               ),
             ],
