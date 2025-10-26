@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nammkart/src/features/cart/presentation/provider/cart_provider.dart';
 import 'package:nammkart/src/features/product/presentation/screens/single_product_screen.dart';
+import 'package:nammkart/src/features/product/presentation/widgets/animated_icon_button.dart';
 import 'package:nammkart/src/features/product/presentation/widgets/rating_star.dart';
 import 'package:nammkart/src/features/wishlist/presentation/providers/wishlist_provider.dart';
 import 'package:provider/provider.dart';
@@ -37,8 +38,8 @@ class ProductCard extends StatelessWidget {
         children: [
           Image.network(
             uri,
-            width: 100,
-            height: 100,
+            width: 90,
+            height: 90,
             fit: BoxFit.cover,
           ),
           Text(
@@ -47,7 +48,6 @@ class ProductCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          // Text(rating,style: TextStyle(fontSize: 16,color: Colors.deepPurple),),
           RatingStar(rating: double.parse(rating), size: 18),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -72,62 +72,41 @@ class ProductCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              ElevatedButton(
-                onPressed: () {
+              AnimatedIconButton(
+                onAdd: () {
                   cartProvider.addToCart(productID);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text('$productName added to the cart'),
                     ),
                   );
-                  // Navigator.pop(context);
                 },
-                style: ElevatedButton.styleFrom(
-                  elevation: 2,
-                  shape: CircleBorder(),
-                  minimumSize: Size(1, 1),
-                  padding: EdgeInsets.all(10),
-                  backgroundColor: Colors.deepPurple, // Button color
-                  foregroundColor: Colors.red, // Splash color
-                ),
-                child: Icon(Icons.add_shopping_cart, color: Colors.white),
+               
+                iconData:Icons.add_shopping_cart,
               ),
-              ElevatedButton(
-                onPressed: () async {
-                  // Navigator.pop(context);
+              AnimatedIconButton(
+                onAdd: () async {
                   await wishlistProvider
                       .addWishlist(token, {"productId": productID});
+                      ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Product added to the Wishlist'),
+                    ),
+                  );
                 },
-                style: ElevatedButton.styleFrom(
-                  elevation: 2,
-                  minimumSize: Size(1, 1),
-                  shadowColor: Colors.green,
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(10),
-                  backgroundColor: Colors.deepPurple, // Button color
-                  foregroundColor: Colors.red, // Splash color
-                ),
-                child: Icon(Icons.favorite, color: Colors.white),
+                
+                iconData: Icons.favorite,
               ),
-              ElevatedButton(
-                onPressed: () {
-                  // Navigator.pop(context);
+              AnimatedIconButton(
+                onAdd: () {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (_) =>
                               SingleProductScreen(productID: productID)));
                 },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(1, 1),
-                  elevation: 2,
-                  shadowColor: Colors.green,
-                  shape: CircleBorder(),
-                  padding: EdgeInsets.all(10),
-                  backgroundColor: Colors.deepPurple, // Button color
-                  foregroundColor: Colors.red, // Splash color
-                ),
-                child: Icon(Icons.remove_red_eye, color: Colors.white),
+               
+                iconData: Icons.remove_red_eye,
               )
             ],
           ),

@@ -38,8 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextField(
                   controller: emailController,
                   decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.email),
                     labelText: 'Email',
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(40))
+                    ),
                   ),
                   keyboardType: TextInputType.emailAddress,
                 ),
@@ -47,8 +50,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextField(
                   controller: passwordController,
                   decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.remove_red_eye_rounded),
                     labelText: 'Password',
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(40))
+                    ),
                   ),
                   obscureText: true,
                 ),
@@ -64,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: Text(
                         'Forgot Password?',
-                        style: TextStyle(color: Colors.deepPurple),
+                        style: TextStyle(color: Colors.deepPurple,fontSize: 16),
                       ),
                     ),
                   ],
@@ -103,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         MaterialPageRoute(
                             builder: (_) => const SignupScreen()));
                   },
-                  child: const Text("Don't have an account? Sign Up"),
+                  child: const Text("Don't have an account? Sign Up",style: TextStyle(fontSize: 16),),
                 )
               ],
             ),

@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:nammkart/src/config/environment/environment.dart';
 import 'package:nammkart/src/config/utils/api_service.dart';
 import 'package:nammkart/src/features/product/data/models/category_model.dart';
 import 'package:nammkart/src/features/product/data/models/product_model.dart';

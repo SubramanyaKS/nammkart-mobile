@@ -143,12 +143,6 @@ class _MainScreenState extends State<MainScreen> {
                                 decoration: BoxDecoration(
                                   color: Theme.of(context).cardColor,
                                   borderRadius: BorderRadius.circular(12),
-                                  // boxShadow: [
-                                  // BoxShadow(
-                                  // color: Theme.of(context).shadowColor,
-                                  // blurRadius: 6,
-                                  // ),
-                                  // ],
                                 ),
                                 width: 200,
                                 margin: EdgeInsets.only(left: 10),
