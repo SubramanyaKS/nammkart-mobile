@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nammkart/src/features/auth/presentation/provider/user_provider.dart';
 import 'package:nammkart/src/config/common/custom_button.dart';
+import 'package:nammkart/src/features/auth/presentation/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -38,16 +39,22 @@ class _SignupScreenState extends State<SignupScreen> {
                 TextField(
                   controller: nameController,
                   decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.person),
                     labelText: 'Full Name',
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(40))
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
                 TextField(
                   controller: emailController,
                   decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.email),
                     labelText: 'Email',
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(40))
+                    ),
                   ),
                   keyboardType: TextInputType.emailAddress,
                 ),
@@ -55,12 +62,15 @@ class _SignupScreenState extends State<SignupScreen> {
                 TextField(
                   controller: passwordController,
                   decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.remove_red_eye_rounded),
                     labelText: 'Password',
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(40))
+                    ),
                   ),
                   obscureText: true,
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 30),
                 CustomButton(
                     title: 'Sign Up',
                     onPress: () {
@@ -73,7 +83,12 @@ class _SignupScreenState extends State<SignupScreen> {
                     }),
                 const SizedBox(height: 16),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => LoginScreen()));
+                  },
                   child: const Text("Already have an account? Login"),
                 )
               ],

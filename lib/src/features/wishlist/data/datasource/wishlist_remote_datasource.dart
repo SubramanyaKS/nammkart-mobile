@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:nammkart/src/config/environment/environment.dart';
+import 'package:nammkart/src/config/utils/api_service.dart';
 import 'package:nammkart/src/features/wishlist/data/models/wishlist_model.dart';
 
 class WishlistRemoteDatasource {
+  final api=APIService();
   Future<String> addWishlist(token, productId) async {
     final response = await http.post(
         Uri.parse(
@@ -22,15 +24,7 @@ class WishlistRemoteDatasource {
   }
 
   Future<WishlistModel> getWishlist(token) async {
-    final response = await http.get(
-      Uri.parse(
-        '${Environment.backendUrl}/api/wishlist/user',
-      ),
-      headers: {
-        'Authorization': 'Bearer $token',
-        'Content-Type': 'application/json',
-      },
-    );
+    final response = await api.get('/api/wishlist/user', token:token);
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
 

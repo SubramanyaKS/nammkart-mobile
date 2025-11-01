@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:nammkart/src/config/environment/environment.dart';
+import 'package:nammkart/src/config/utils/api_service.dart';
 import 'package:nammkart/src/features/address/data/model/address_model.dart';
 import 'package:nammkart/src/features/address/domain/entities/address.dart';
 
 class AddressRemoteDatasource {
+  final api = APIService();
   Future<String> addAddress(userId, address) async {
     final response = await http.post(
         Uri.parse(
@@ -24,8 +26,7 @@ class AddressRemoteDatasource {
 
   Future<AddressEntity> viewAddress(userId) async {
     try {
-      final response = await http.get(Uri.parse(
-          '${Environment.backendUrl}/api/users/auth/$userId/address'));
+      final response = await api.get('/api/users/auth/$userId/address');
       final jsonData = json.decode(response.body);
       return AddressModel.fromJson(jsonData);
     } catch (error) {
